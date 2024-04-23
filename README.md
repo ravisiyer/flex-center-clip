@@ -1,1 +1,1 @@
-Demonstrates horizontal scroll cut-off issue with flex justify-content: center
+Demonstrates horizontal scroll left side cut-off or clipping issue with flex justify-content: center
