@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* justify-content: center;  Set in JavaScript code below. */
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center;
+        word-break: break-word;
+        word-wrap: break-word;
+      }
+
+      /* overflow-x: scroll;  Set in JavaScript code below. */
+      .item {
+        max-width: 800px;
+        margin: auto;
+      }
+
+      button {
+        margin-bottom: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <div id="item" class="item">
+        <!-- <div style="text-align: right"> -->
+        <div>
+          Current value of key style properties: <span id="info"></span>
+        </div>
+        <!-- <div style="margin-bottom: 0.25rem; text-align: right"> -->
+        <div style="margin-bottom: 0.25rem">
+          <span style="font-size: large; font-weight: bold">Set</span>
+          <span>container flex: justifyContent=</span>
+          <button onclick="setJustifyContentInitial()">"initial"</button>
+          <button onclick="setJustifyContentCenter()">"center"</button><br />
+          <span>item div: overflowX=</span>
+          <button onclick="setOverflowXInitial()">"initial"</button>
+          <button onclick="setOverflowXScroll()">"scroll"</button><br />
+          <span>image:</span>
+          <button onclick="hideImage()">Hide</button>
+          <button onclick="showImage()">Show</button>
+          <span>span-ws-pre:</span>
+          <button onclick="hideSpanWsPre()">Hide</button>
+          <button onclick="showSpanWsPre()">Show</button><br />
+        </div>
+        <!-- <p style="text-align: right"> -->
+        <p>
+          Page with margin: auto applied to .item (item div class) to
+          horizontally center. .item max-width is set to 800px for testing
+          purposes. .container justify-content is initialized to "initial" With
+          these settings, reducing window width does not result in left side
+          cut-off/clipping problem. So problem seems to get solved with this
+          fix.<br />
+          Setting container flex: justifyContent to "center" creates the left
+          side cut-off/clipping problem!<br />
+        </p>
+        <hr />
+        <div id="image">
+          <a
+            href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4R0ohlMbu5jMIcIO6eklPji-IJFLPUgROFfqkM840ix7m4tGnnPg6Zw_enlvj1EHLdnlKL8HEzpm8Qibf9BM7cHbQ_oqVXLLw-vM-zGzWa2ITsrZo2fNhUhWuvHiN9tGNo0CgybTnQOeBm5PTLGggIdrXSnWJjDWEpTJ_0NNaK4ljoev7BWiHHyGk-7tF/s973/DC-MainForm1.jpg"
+          >
+            <img
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4R0ohlMbu5jMIcIO6eklPji-IJFLPUgROFfqkM840ix7m4tGnnPg6Zw_enlvj1EHLdnlKL8HEzpm8Qibf9BM7cHbQ_oqVXLLw-vM-zGzWa2ITsrZo2fNhUhWuvHiN9tGNo0CgybTnQOeBm5PTLGggIdrXSnWJjDWEpTJ_0NNaK4ljoev7BWiHHyGk-7tF/s973/DC-MainForm1.jpg"
+              width="640"
+            />
+          </a>
+          <!-- If above blogger image link is broken then comment above code and uncomment
+          below code that uses same image in project folder. -->
+          <!-- <img src="DC-MainForm1.jpg" width="640" /> -->
+        </div>
+        <div>
+          <span style="font-size: large"
+            >[Span without whitespace: pre:] This post is about the app/program,
+            "<a
+              href="https://raviswdev.blogspot.com/2024/04/barebones-blogger-blog-feed-to-html.html"
+              >Blogger Blog Feed to HTML Book</a
+            >" that I have currently published on
+            <a href="https://bloggerfeedtobook.netlify.app/"
+              >https://bloggerfeedtobook.netlify.app/</a
+            >.</span
+          >
+        </div>
+        <span id="span-ws-pre" style="white-space: pre"
+          ><div>
+            <span style="font-size: large"
+              >[Span with white-space: pre:] It should work with any Blogger
+              blog. I have tested it with one of my Blogger blogs and some other
+              Blogger blog.
+            </span>
+          </div>
+        </span>
+      </div>
+    </div>
+    <script>
+      const containerElm = document.getElementById("container");
+      const itemElm = document.getElementById("item");
+      const imageElm = document.getElementById("image");
+      const spanWsPreElm = document.getElementById("span-ws-pre");
+      const infoElm = document.getElementById("info");
+      initStyle();
+      updateInfo();
+      function setJustifyContentInitial() {
+        containerElm.style.justifyContent = "initial";
+        updateInfo();
+      }
+      function setJustifyContentCenter() {
+        containerElm.style.justifyContent = "center";
+        updateInfo();
+      }
+
+      function setOverflowXInitial() {
+        itemElm.style.overflowX = "initial";
+        updateInfo();
+      }
+
+      function setOverflowXScroll() {
+        itemElm.style.overflowX = "scroll";
+        updateInfo();
+      }
+
+      function hideImage() {
+        imageElm.style.display = "none";
+        updateInfo();
+      }
+      function showImage() {
+        imageElm.style.display = "block";
+        updateInfo();
+      }
+
+      function hideSpanWsPre() {
+        spanWsPreElm.style.display = "none";
+        updateInfo();
+      }
+
+      function showSpanWsPre() {
+        spanWsPreElm.style.display = "inline";
+        updateInfo();
+      }
+
+      function initStyle() {
+        //containerElm.style.justifyContent = "center";
+        containerElm.style.justifyContent = "initial";
+        itemElm.style.overflowX = "initial";
+        imageElm.style.display = "block";
+        spanWsPreElm.style.display = "inline";
+      }
+      function updateInfo() {
+        infoElm.innerHTML =
+          "container flex: justifyContent: " +
+          containerElm.style.justifyContent +
+          ", item div: overflowX: " +
+          itemElm.style.overflowX +
+          ", image: display: " +
+          imageElm.style.display +
+          ", span-ws-pre: display: " +
+          spanWsPreElm.style.display;
+      }
+    </script>
+  </body>
+</html>
